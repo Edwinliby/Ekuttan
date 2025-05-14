@@ -38,7 +38,7 @@ export default function Work() {
                     My Experience
                 </b>
 
-                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[7.5rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative pb-2">
+                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative pb-2">
                     <motion.span
                         variants={blurFadeIn}
                         initial="hidden"
@@ -46,7 +46,7 @@ export default function Work() {
                         transition={{ duration: 1.2 }}
                         viewport={{ once: true }}
                         className="origin-top z-0 absolute left-6.25 block w-0.5 2xl:w-[2.5px] bg-[#c0c0c0]
-                        h-[calc(100%+6rem)] xs:h-[calc(100%+2rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] 2xl:h-[80%]"
+                        h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] 2xl:h-[80%]"
                     />
 
                     {exp.map((item, index) => (
@@ -82,7 +82,7 @@ export default function Work() {
                     My Works & Projects
                 </b>
 
-                <Marquee speed={50} gradient={false} pauseOnHover={true} className="overflow-hidden w-full h-full absolute bottom-0 left-0">
+                <Marquee speed={50} gradient={false} className="overflow-hidden w-full h-full absolute bottom-0 left-0">
                     {works.map((item, i) => (
                         <motion.div
                             key={i}
@@ -99,7 +99,7 @@ export default function Work() {
                                 width={500}
                                 height={500}
                                 draggable={false}
-                                className="w-fit h-fit saturate-0 active:saturate-100 hover:saturate-100 object-contain shadow-xl rounded -rotate-6 translate-y-2 hover:-translate-y-3 active:-translate-y-3 transition-all duration-300 ease-in-out"
+                                className="w-fit h-fit object-contain shadow-xl rounded -rotate-6 translate-y-2 hover:-translate-y-3 active:-translate-y-3 transition-all duration-300 ease-in-out"
                             />
                         </motion.div>
                     ))}

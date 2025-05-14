@@ -3,56 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-type StatusColor = 'green' | 'orange' | 'red' | 'gray';
-
-const colorMap: Record<StatusColor, [string, string]> = {
-    green: ['#4ade80', '#22c55e'],
-    orange: ['#fdba74', '#f97316'],
-    red: ['#fca5a5', '#ef4444'],
-    gray: ['#d1d5db', '#6b7280'],
-};
-
 export default function Navbar() {
-    const [hydrated, setHydrated] = useState(false);
-    const [weatherData, setWeatherData] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const cached = localStorage.getItem('weatherData');
-            if (cached) {
-                const { icon, desc, timestamp } = JSON.parse(cached);
-                if (Date.now() - timestamp < 30 * 60 * 1000) {
-                    return { icon, desc };
-                }
-            }
-        }
-        return { icon: null, desc: '' };
-    });
+    const [statusColor, setStatusColor] = useState<'green' | 'orange' | 'red' | 'gray'>('gray');
+    const [iconCode, setIconCode] = useState<string | null>(null);
+    const [weatherDesc, setWeatherDesc] = useState<string>('');
+    const [currentTime, setCurrentTime] = useState<Date>(new Date());
+    const [statusLabel, setStatusLabel] = useState<string>('Checking...');
 
-    const [currentTime, setCurrentTime] = useState(new Date());
-    const [status, setStatus] = useState<{ label: string; color: StatusColor }>({
-        label: '',
-        color: 'gray',
-    });
-
-    useEffect(() => {
-        setHydrated(true); // ensures React state is ready
-    }, []);
-
-    useEffect(() => {
-        const indiaNow = new Date(
-            currentTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
-        );
-        const start = new Date(indiaNow.setHours(9, 0, 0));
-        const end = new Date(indiaNow.setHours(19, 0, 0));
-        const oneHourBefore = new Date(start.getTime() - 60 * 60 * 1000);
-
-        if (indiaNow >= start && indiaNow <= end) {
-            setStatus({ label: 'Online', color: 'green' });
-        } else if (indiaNow >= oneHourBefore && indiaNow < start) {
-            setStatus({ label: 'Online Soon', color: 'orange' });
-        } else {
-            setStatus({ label: 'Offline', color: 'red' });
-        }
-    }, [currentTime]);
+    const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHERMAP;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -61,83 +19,131 @@ export default function Navbar() {
         return () => clearInterval(interval);
     }, []);
 
-    // Weather fetch fallback
     useEffect(() => {
-        if (!weatherData.icon) {
-            fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=Kochi,in&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP}&units=metric`
-            )
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data?.weather?.[0]) {
-                        const icon = data.weather[0].icon;
-                        const desc = data.weather[0].description;
-                        localStorage.setItem(
-                            'weatherData',
-                            JSON.stringify({ icon, desc, timestamp: Date.now() })
-                        );
-                        setWeatherData({ icon, desc });
-                    }
-                });
-        }
-    }, [weatherData]);
+        const fetchWeather = async (): Promise<void> => {
+            try {
+                const res = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=Kochi,in&appid=${API_KEY}&units=metric`
+                );
+                const data = await res.json();
 
-    const colorMap = {
+                if (data?.weather?.[0]) {
+                    setIconCode(data.weather[0].icon);
+                    setWeatherDesc(data.weather[0].description);
+                } else {
+                    console.warn('Unexpected weather response:', data);
+                }
+            } catch (err) {
+                console.error('Failed to fetch weather:', err);
+            }
+        };
+
+        if (API_KEY) fetchWeather();
+    }, [API_KEY]);
+
+    const getIndiaTime = (date: Date): Date =>
+        new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+
+    const formatIndiaTime = (date: Date, options: Intl.DateTimeFormatOptions) => {
+        return new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Asia/Kolkata',
+            ...options,
+        }).format(date);
+    };
+
+    useEffect(() => {
+        const indiaNow = getIndiaTime(currentTime);
+
+        const year = indiaNow.getFullYear();
+        const month = indiaNow.getMonth();
+        const date = indiaNow.getDate();
+
+        const start = new Date(year, month, date, 9, 0, 0);
+        const end = new Date(year, month, date, 19, 0, 0);
+        const oneHourBefore = new Date(start.getTime() - 60 * 60 * 1000);
+
+        if (indiaNow >= start && indiaNow <= end) {
+            setStatusColor('green');
+            setStatusLabel('Online');
+        } else if (indiaNow >= oneHourBefore && indiaNow < start) {
+            setStatusColor('orange');
+            setStatusLabel('Online Soon');
+        } else {
+            setStatusColor('red');
+            setStatusLabel('Offline');
+        }
+    }, [currentTime]);
+
+    const colorMap: Record<string, [string, string]> = {
         green: ['#4ade80', '#22c55e'],
         orange: ['#fdba74', '#f97316'],
         red: ['#fca5a5', '#ef4444'],
         gray: ['#d1d5db', '#6b7280'],
     };
 
-    const [outer, inner] = colorMap[status.color];
-
-    if (!hydrated) return null; // Avoid hydration mismatch flash
+    const [outer, inner] = colorMap[statusColor];
 
     return (
-        <nav className="fixed top-0 inset-x-0 w-full sm:h-16 px-2 pt-2.5 sm:p-4 flex items-center justify-between bg-transparent z-50 max-w-[1700px] mx-auto">
-            <div className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full shadow-2xs text-[10px] sm:text-xs">
-                <span className="relative flex h-3 w-3 items-center justify-center">
-                    <motion.span
-                        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-full rounded-full"
-                        style={{ backgroundColor: outer }}
-                        animate={{
-                            scale: [1, 2],
-                            opacity: [0.8, 0],
-                        }}
-                        transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                        }}
-                    />
+        <nav className="fixed top-0 inset-x-0 w-full sm:h-16 px-2 pt-2.5 sm:p-4 bg-transparent z-50 max-w-[1920px] mx-auto">
+            {iconCode &&
+                <motion.div
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full shadow-2xs text-[10px] sm:text-xs"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                    layout
+                >
+                    <span className="relative flex h-3 w-3 items-center justify-center">
+                        <motion.span
+                            className="absolute inline-flex h-full w-full rounded-full"
+                            style={{ backgroundColor: outer }}
+                            animate={{
+                                scale: [1, 2],
+                                opacity: [0.8, 0],
+                            }}
+                            transition={{
+                                duration: 2.5,
+                                repeat: Infinity,
+                                ease: 'easeInOut',
+                            }}
+                        />
+                        <span
+                            className="relative inline-flex rounded-full h-2 w-2"
+                            style={{ backgroundColor: inner }}
+                        ></span>
+                    </span>
+                    <span className="font-bold text-black pl-1">
+                        {statusLabel} <span className="text-gray-500">(9:00 — 19:00)</span>
+                    </span>
+                    |
                     <span
-                        className="relative rounded-full h-2 w-2"
-                        style={{ backgroundColor: inner }}
-                    />
-                </span>
-                <span className="font-bold text-black pl-1">
-                    {status.label} <span className="text-gray-500">(9:00 — 19:00)</span>
-                </span>
-                |
-                <span className="text-gray-600">
-                    {new Intl.DateTimeFormat('en-GB', {
-                        timeZone: 'Asia/Kolkata',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        timeZoneName: 'short',
-                    }).format(currentTime)}
-                </span>
-                {weatherData.icon && (
+                        className="text-gray-600 cursor-help"
+                        title={formatIndiaTime(currentTime, {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            timeZoneName: 'long',
+                        })}
+                    >
+                        {formatIndiaTime(currentTime, {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            timeZoneName: 'short',
+                        })}
+                    </span>
                     <img
-                        src={`https://openweathermap.org/img/wn/${weatherData.icon}.png`}
+                        src={`https://openweathermap.org/img/wn/${iconCode}.png`}
                         alt="weather"
-                        title={weatherData.desc}
-                        className="w-5 h-5"
+                        title={weatherDesc}
+                        className="w-5 h-5 cursor-help"
                     />
-                )}
-            </div>
+                </motion.div>
+            }
 
-            <p className="text-[10px] sm:text-sm font-bold float-right flex items-center gap-1">
+            <p className="text-[10px] sm:text-sm relative top-2 sm:top-1 float-right font-bold flex items-center gap-1">
                 Chengannur, KL
                 <img
                     src="https://flagcdn.com/16x12/in.png"

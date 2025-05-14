@@ -7,6 +7,7 @@ import c2 from '@/../public/companies/3.webp';
 import c3 from '@/../public/companies/1.webp';
 import c4 from '@/../public/companies/4.webp';
 import c5 from '@/../public/companies/5.webp';
+import Pic from '@/../public/pic.webp';
 
 const companies = [c1, c2, c3, c4, c5];
 
@@ -30,14 +31,14 @@ const fadeInWithBlur = {
 
 export default function Index() {
     return (
-        <div className="w-full md:w-[60%] xl:w-fit h-fit md:h-[20rem] xl:h-full xl:py-8 flex flex-col gap-6 xs:gap-8 justify-between">
+        <div className="w-full md:w-[60%] xl:w-fit h-fit md:h-[20rem] xl:h-full xl:py-2 flex flex-col gap-6 xs:gap-8 justify-between">
             {/* Headings Section */}
-            <div className="flex flex-col gap-2 xs:gap-4">
+            <div className="flex flex-col">
                 <motion.h1
                     variants={fadeInWithBlur}
                     initial="hidden"
                     animate="visible"
-                    className="text-7xl xl:text-8xl font-bold text-transparent text-gradient leading-tight"
+                    className="text-7xl xl:text-8xl font-bold text-transparent text-gradient"
                 >
                     Frontend
                 </motion.h1>
@@ -46,7 +47,7 @@ export default function Index() {
                     variants={fadeInWithBlur}
                     initial="hidden"
                     animate="visible"
-                    className="text-7xl xl:text-8xl font-bold text-transparent text-gradient leading-tight"
+                    className="text-7xl xl:text-8xl font-bold text-transparent text-gradient mt-1"
                 >
                     Developer
                 </motion.h1>
@@ -55,7 +56,7 @@ export default function Index() {
                     variants={fadeInWithBlur}
                     initial="hidden"
                     animate="visible"
-                    className="text-2xl xl:text-3xl font-semibold text-gradient"
+                    className="text-2xl xl:text-3xl font-semibold text-gradient mt-4 sm:mt-6"
                 >
                     3 years of experience
                 </motion.p>
@@ -72,15 +73,15 @@ export default function Index() {
                     companies and community i have worked with
                 </p>
 
-                <div className="flex gap-6 items-center justify-between">
+                <div className="flex gap-6 3xl:gap-10 items-center justify-between">
                     {companies.map((company) => (
-                        <div key={company.src} className="w-16 h-16">
+                        <div key={company.src} className="w-16 h-16 3xl:w-22 3xl:h-22">
                             <Image
                                 src={company}
                                 alt="company"
                                 width={100}
                                 height={100}
-                                className="w-full h-full object-contain saturate-0 py-5 sm:py-4"
+                                className="w-full h-full object-contain py-5 sm:py-4.5"
                             />
                         </div>
                     ))}
