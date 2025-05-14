@@ -11,7 +11,7 @@ import w10 from "@/../public/works/10.webp";
 import w11 from "@/../public/works/11.webp";
 import w12 from "@/../public/works/12.webp";
 import w13 from "@/../public/works/13.webp";
-import w14 from "@/../public/works/14.webp";
+// import w14 from "@/../public/works/14.webp";
 import w15 from "@/../public/works/15.webp";
 import w16 from "@/../public/works/16.webp";
 import w17 from "@/../public/works/17.webp";
@@ -30,7 +30,7 @@ export const works = [
   w11,
   w12,
   w13,
-  w14,
+  // w14,
   w15,
   w16,
   w17,

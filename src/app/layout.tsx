@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 
 const neueMontreal = localFont({
   src: [
@@ -25,7 +26,7 @@ const neueMontreal = localFont({
 
 export const metadata: Metadata = {
   title: "Edwin Liby aka Ekuttan",
-  description: "Welcome to my portfolio",
+  description: "Welcome to my Portfolio",
 };
 
 export default function RootLayout({
@@ -35,9 +36,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Ekuttan" />
+      </head>
       <body
         className={`${neueMontreal.variable} antialiased`}
       >
+        <Analytics />
         {children}
       </body>
     </html>
