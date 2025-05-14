@@ -3,6 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
+type StatusColor = 'green' | 'orange' | 'red' | 'gray';
+
+const colorMap: Record<StatusColor, [string, string]> = {
+    green: ['#4ade80', '#22c55e'],
+    orange: ['#fdba74', '#f97316'],
+    red: ['#fca5a5', '#ef4444'],
+    gray: ['#d1d5db', '#6b7280'],
+};
+
 export default function Navbar() {
     const [hydrated, setHydrated] = useState(false);
     const [weatherData, setWeatherData] = useState(() => {
@@ -19,7 +28,10 @@ export default function Navbar() {
     });
 
     const [currentTime, setCurrentTime] = useState(new Date());
-    const [status, setStatus] = useState({ label: '', color: 'gray' });
+    const [status, setStatus] = useState<{ label: string; color: StatusColor }>({
+        label: '',
+        color: 'gray',
+    });
 
     useEffect(() => {
         setHydrated(true); // ensures React state is ready
