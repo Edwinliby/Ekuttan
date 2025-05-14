@@ -167,7 +167,7 @@ export default function Navbar() {
     const [currentTime, setCurrentTime] = useState<Date>(new Date());
     const [statusLabel, setStatusLabel] = useState<string>('Checking...');
 
-    const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY;
+    const API_KEY = process.env.OPENWEATHERMAP;
 
     useEffect(() => {
         const interval = setInterval(() => {
