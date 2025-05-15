@@ -7,7 +7,6 @@ import c2 from '@/../public/companies/3.webp';
 import c3 from '@/../public/companies/1.webp';
 import c4 from '@/../public/companies/4.webp';
 import c5 from '@/../public/companies/5.webp';
-import Pic from '@/../public/pic.webp';
 
 const companies = [c1, c2, c3, c4, c5];
 
