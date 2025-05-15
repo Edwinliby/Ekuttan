@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
+import line from '@/../public/curveLine.svg';
 import { exp, works } from './const';
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 
 // Reusable blur-in animation
 const blurFadeIn = {
@@ -24,6 +26,20 @@ const blurFadeIn = {
 };
 
 export default function Work() {
+    const [radius, setRadius] = useState(325)
+
+    useEffect(() => {
+        const handleResize = () => {
+            const newRadius = window.innerWidth <= 500 ? 325 : 450;
+            setRadius(newRadius);
+        };
+
+        handleResize(); // run once on mount
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="w-full h-full flex flex-col md:flex-row 2xl:flex-col gap-3 xs:gap-5">
             {/* My Experience Card */}
@@ -32,13 +48,13 @@ export default function Work() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="xs:h-full 2xl:h-fit w-full lg:w-1/2 2xl:w-full shadow-lg rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 px-3 xs:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#F5F5F5]"
+                className="sm:h-full 2xl:h-fit w-full lg:w-1/2 2xl:w-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 px-3 xs:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
             >
                 <b className="z-10 w-fit relative shadow px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-white">
                     My Experience
                 </b>
 
-                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative pb-2">
+                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative top-1 pb-2">
                     <motion.span
                         variants={blurFadeIn}
                         initial="hidden"
@@ -46,7 +62,7 @@ export default function Work() {
                         transition={{ duration: 1.2 }}
                         viewport={{ once: true }}
                         className="origin-top z-0 absolute left-6.25 block w-0.5 2xl:w-[2.5px] bg-[#c0c0c0]
-                        h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] 2xl:h-[80%]"
+                        h-[calc(100%+8rem)] 2xs:h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] 2xl:h-[80%]"
                     />
 
                     {exp.map((item, index) => (
@@ -76,13 +92,25 @@ export default function Work() {
                 whileInView="visible"
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
-                className="overflow-hidden w-full lg:w-1/2 2xl:w-full h-full relative shadow-lg rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 bg-gradient-to-b from-[#F0F0F0] to-[#F5F5F5]"
+                className="overflow-hidden relative w-full lg:w-1/2 2xl:w-full h-[10rem] xs:h-[13rem] sm:h-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
             >
                 <b className="z-10 w-fit relative left-3 xs:left-4 shadow px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-white">
                     My Works & Projects
                 </b>
-
-                <Marquee speed={50} gradient={false} className="overflow-hidden w-full h-full absolute bottom-0 left-0">
+                <Image
+                    src={line}
+                    alt="line"
+                    width={500}
+                    height={500}
+                    draggable={false}
+                    className="w-full h-fit absolute bottom-0 sm:bottom-4 inset-x-0 z-0"
+                />
+                <OrbitingCircles
+                    path={false}
+                    radius={radius}
+                    speed={0.5}
+                    className='w-full h-full top-[225%] xs:top-[175%] sm:top-[200%] lg:top-[225%] left-1/2 -translate-x-1/2'
+                >
                     {works.map((item, i) => (
                         <motion.div
                             key={i}
@@ -99,11 +127,11 @@ export default function Work() {
                                 width={500}
                                 height={500}
                                 draggable={false}
-                                className="w-fit h-fit object-contain shadow-xl rounded -rotate-6 translate-y-2 hover:-translate-y-3 active:-translate-y-3 transition-all duration-300 ease-in-out"
+                                className="w-fit h-fit object-contain shadow-xl rounded -rotate-6"
                             />
                         </motion.div>
                     ))}
-                </Marquee>
+                </OrbitingCircles>
             </motion.div>
         </div>
     );
