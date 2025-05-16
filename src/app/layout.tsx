@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { PostHogProvider } from "../components/PostHogProvider";
 
 const neueMontreal = localFont({
@@ -28,6 +27,22 @@ const neueMontreal = localFont({
 export const metadata: Metadata = {
   title: "Edwin Liby aka Ekuttan",
   description: "Welcome to my Portfolio",
+  openGraph: {
+    title: "Edwin Liby aka Ekuttan",
+    description: "Welcome to my Portfolio",
+    url: 'https://ekuttan.vercel.app/',
+    siteName: 'Edwin Liby aka Ekuttan',
+    images: [
+      {
+        url: 'https://ekuttan.vercel.app/icon0.svg',
+        width: 256,
+        height: 75,
+        alt: "Edwin Liby aka Ekuttan",
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -47,7 +62,6 @@ export default function RootLayout({
           {children}
         </PostHogProvider>
       </body>
-      <GoogleAnalytics gaId="G-6NRWXGK37W" />
     </html>
   );
 }

@@ -83,7 +83,7 @@ export default function Index() {
                     animate="visible"
                     className="text-2xl xl:text-3xl font-semibold text-gradient mt-4 sm:mt-6"
                 >
-                    3 years of experience
+                    with 3 years of experience
                 </motion.p>
             </div>
 

@@ -4,7 +4,7 @@ import HomePage from '@/components/Home'
 
 export default function Home() {
   return (
-    <main className="w-full h-screen">
+    <main className="w-full sm:h-screen">
       <Particles
         className="absolute inset-0 -z-10"
         quantity={300}

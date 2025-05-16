@@ -48,10 +48,13 @@ export default function Work() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="sm:h-full 2xl:h-fit w-full lg:w-1/2 2xl:w-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 px-3 xs:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
+                className="group sm:h-full 2xl:h-fit w-full lg:w-1/2 2xl:w-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 px-3 xs:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
             >
                 <b className="z-10 w-fit relative shadow px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-white">
-                    My Experience
+                    <span>
+                        <img src="/xp.webp" alt="xp" draggable={false} className='w-4 h-4 inline relative -top-0.5 mr-1 group-hover:animate-bounce' />
+                        XP Stats
+                    </span>
                 </b>
 
                 <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative top-1 pb-2">
@@ -77,8 +80,8 @@ export default function Work() {
                         >
                             <span className="rounded-full w-3 h-3 bg-black" />
                             <div className="relative -top-1.5">
-                                <b>{item.title}</b>
-                                <p className="text-xs text-[#919191]">{item.time}</p>
+                                <b className='text-sm sm:text-base tracking-wide'>{item.title}</b>
+                                <p className="text-[0.65rem] sm:text-xs text-[#919191]">{item.time}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -92,10 +95,13 @@ export default function Work() {
                 whileInView="visible"
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
-                className="overflow-hidden relative w-full lg:w-1/2 2xl:w-full h-[10rem] xs:h-[13rem] sm:h-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
+                className="overflow-hidden group relative w-full lg:w-1/2 2xl:w-full h-[10rem] xs:h-[13rem] sm:h-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
             >
                 <b className="z-10 w-fit relative left-3 xs:left-4 shadow px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-white">
-                    My Works & Projects
+                    <span>
+                        <img src="/craft.webp" alt="craft" draggable={false} className='w-4 h-4 inline relative -top-0.5 mr-1 group-hover:animate-bounce' />
+                        Works & Projects
+                    </span>
                 </b>
                 <Image
                     src={line}
