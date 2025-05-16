@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/next";
-import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { PostHogProvider } from "../components/PostHogProvider";
 
 const neueMontreal = localFont({
   src: [
@@ -40,12 +40,12 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-title" content="Ekuttan" />
       </head>
-      <GoogleTagManager gtmId="G-6NRWXGK37W" />
       <body
         className={`${neueMontreal.variable} antialiased`}
       >
-        <Analytics />
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
       </body>
       <GoogleAnalytics gaId="G-6NRWXGK37W" />
     </html>
