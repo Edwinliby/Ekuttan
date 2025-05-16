@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: 'Edwin Liby aka Ekuttan',
     images: [
       {
-        url: 'https://ekuttan.vercel.app/icon0.svg',
+        url: 'https://ekuttan.vercel.app/web-app-manifest-192x192.png',
         width: 256,
         height: 75,
         alt: "Edwin Liby aka Ekuttan",
@@ -56,7 +56,7 @@ export default function RootLayout({
   <meta name="apple-mobile-web-app-title" content="Ekuttan" />
   <meta property="og:title" content="Edwin Liby aka Ekuttan" />
   <meta property="og:description" content="Welcome to my Portfolio" />
-  <meta property="og:image" content="https://ekuttan.vercel.app/icon0.svg" />
+  <meta property="og:image" content="https://ekuttan.vercel.app/web-app-manifest-192x192.png" />
   <meta property="og:url" content="https://ekuttan.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Edwin Liby aka Ekuttan" />
