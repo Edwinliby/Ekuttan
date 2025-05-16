@@ -52,9 +52,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="apple-mobile-web-app-title" content="Ekuttan" />
-      </head>
+     <head>
+  <meta name="apple-mobile-web-app-title" content="Ekuttan" />
+  <meta property="og:title" content="Edwin Liby aka Ekuttan" />
+  <meta property="og:description" content="Welcome to my Portfolio" />
+  <meta property="og:image" content="https://ekuttan.vercel.app/icon0.svg" />
+  <meta property="og:url" content="https://ekuttan.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Edwin Liby aka Ekuttan" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edwin Liby aka Ekuttan" />
+  <meta name="twitter:description" content="Welcome to my Portfolio" />
+  <meta name="twitter:image" content="https://ekuttan.vercel.app/icon0.svg" />
+</head>
       <body
         className={`${neueMontreal.variable} antialiased`}
       >
