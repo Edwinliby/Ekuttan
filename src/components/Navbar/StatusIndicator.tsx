@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { formatIndiaTime } from '@/utils/timeUtils';
+import { formatIndiaTime } from '@/lib/utils';
 
 const colorMap: Record<string, [string, string]> = {
     green: ['#4ade80', '#22c55e'],

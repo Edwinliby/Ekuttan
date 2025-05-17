@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import { PostHogProvider } from "../components/PostHogProvider";
+import { Analytics } from "@vercel/analytics/next"
 
 const neueMontreal = localFont({
   src: [
@@ -52,26 +52,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <head>
-  <meta name="apple-mobile-web-app-title" content="Ekuttan" />
-  <meta property="og:title" content="Edwin Liby aka Ekuttan" />
-  <meta property="og:description" content="Welcome to my Portfolio" />
-  <meta property="og:image" content="https://ekuttan.vercel.app/web-app-manifest-192x192.png" />
-  <meta property="og:url" content="https://ekuttan.vercel.app/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Edwin Liby aka Ekuttan" />
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Ekuttan" />
+        <meta property="og:title" content="Edwin Liby aka Ekuttan" />
+        <meta property="og:description" content="Welcome to my Portfolio" />
+        <meta property="og:image" content="https://ekuttan.vercel.app/web-app-manifest-192x192.png" />
+        <meta property="og:url" content="https://ekuttan.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Edwin Liby aka Ekuttan" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Edwin Liby aka Ekuttan" />
-  <meta name="twitter:description" content="Welcome to my Portfolio" />
-  <meta name="twitter:image" content="https://ekuttan.vercel.app/icon0.svg" />
-</head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Edwin Liby aka Ekuttan" />
+        <meta name="twitter:description" content="Welcome to my Portfolio" />
+        <meta name="twitter:image" content="https://ekuttan.vercel.app/icon0.svg" />
+      </head>
       <body
         className={`${neueMontreal.variable} antialiased`}
       >
-        <PostHogProvider>
-          {children}
-        </PostHogProvider>
+        <Analytics />
+        {children}
       </body>
     </html>
   );

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Pic from '@/../public/pic.webp';
 import { motion, useMotionValue, animate } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaLinkedinIn, FaGithub, FaXTwitter, FaEnvelope } from "react-icons/fa6";
 import { useMediaQuery } from 'react-responsive';
 
@@ -23,7 +23,7 @@ const links = [
     },
     {
         icon: <FaXTwitter size={25} />,
-        url: 'https://twitter.com/mauricioalvesdev'
+        url: 'https://x.com/edwinliby'
     },
     {
         icon: <FaEnvelope size={25} />,
@@ -35,8 +35,7 @@ export default function ProfilePic() {
     const cardRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
-
-    const isMobile = useMediaQuery({ maxWidth: 768 });
+    const [hasMounted, setHasMounted] = useState(false);
 
     const toggleClicked = () => setIsClicked(prev => !prev);
     const isActive = isHovered || isClicked;
@@ -81,9 +80,17 @@ export default function ProfilePic() {
         animate(scale, 1, { type: 'spring', stiffness: 150, damping: 10 });
     };
 
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
+
+    const isMobile = useMediaQuery({ query: '(max-width: 1280px)' });
+
+    if (!hasMounted) return null;
+
     return (
         <motion.div
-            className="hdden md:block relative"
+            className="relative"
             style={{ perspective: 1000 }}
             onClick={toggleClicked}
             onHoverStart={() => setIsHovered(true)}
@@ -97,7 +104,7 @@ export default function ProfilePic() {
         >
             <motion.div
                 ref={cardRef}
-                className="relative w-fit h-[20rem] xl:h-full border-[6px] border-white bg-gradient-to-br from-[#FFFFFF] via-[#dfdfdf] to-[#C0C0C0] rounded-[2rem] overflow-hidden shadow-xl"
+                className="relative w-fit h-[20rem] xl:h-[25rem] 2xl:h-fit border-[6px] border-white bg-gradient-to-br from-[#FFFFFF] via-[#dfdfdf] to-[#C0C0C0] rounded-[2rem] overflow-hidden shadow-xl"
                 style={{
                     rotateX,
                     rotateY,
@@ -139,7 +146,7 @@ export default function ProfilePic() {
             </motion.div>
 
             <motion.div
-                className="absolute top-8 right-4 transform sm:-top-18 sm:inset-x-0 sm:w-full sm:h-16 flex flex-col sm:flex-row gap-6 justify-center items-center"
+                className="absolute top-8 right-4 transform sm:right-0 sm:-left-18 xl:-top-20 xl:inset-x-0 w-fit xl:w-full xl:h-16 flex flex-col xl:flex-row gap-6 justify-center items-center"
                 initial="rest"
                 animate={isActive ? 'hovered' : 'rest'}
                 variants={isMobile ? mobileVariants : desktopVariants}

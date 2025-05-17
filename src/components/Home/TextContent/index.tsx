@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import c1 from '@/../public/companies/2.webp';
 import c2 from '@/../public/companies/3.webp';
 import c3 from '@/../public/companies/1.webp';
@@ -55,8 +55,9 @@ const fadeInWithBlur = {
 };
 
 export default function Index() {
+    const controls = useAnimation();
     return (
-        <div className="w-full md:w-[60%] xl:w-[55%] h-fit md:h-[20rem] xl:h-full xl:py-2 flex flex-col items-start gap-4 xs:gap-8 justify-between">
+        <div className="w-full sm:w-fit h-fit flex flex-col items-start gap-4 sm:gap-14 justify-between">
             {/* Headings Section */}
             <div className="flex flex-col">
                 <motion.h1
@@ -65,7 +66,7 @@ export default function Index() {
                     animate="visible"
                     className="text-7xl xl:text-8xl font-bold text-[#171717]"
                 >
-                    Frontend
+                    Adaptive
                 </motion.h1>
 
                 <motion.h1
@@ -94,10 +95,19 @@ export default function Index() {
                 animate="visible"
                 className="w-full sm:w-fit flex flex-col items-center gap-2 sm:gap-3"
             >
-                <div className="w-full overflow-hidden relative shadow-lg rounded-3xl border-4 sm:border-[6px] border-white px-3 py-2 sm:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]">
+                <motion.div
+                    drag
+                    dragElastic={0.2}
+                    dragMomentum={false}
+                    animate={controls}
+                    onDragEnd={() => {
+                        controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 500, damping: 30 } });
+                    }}
+                    className="w-full overflow-hidden relative shadow-lg rounded-3xl border-4 sm:border-[6px] border-white px-3 py-2 sm:px-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
+                >
                     <div className="flex gap-6 3xl:gap-10 items-center justify-between">
                         {companies.map((company) => (
-                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10 3xl:w-22">
+                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10 md:w-11 3xl:w-22">
                                 <motion.img
                                     src={company.img.src}
                                     alt={company.alt}
@@ -110,8 +120,8 @@ export default function Index() {
                             </Link>
                         ))}
                     </div>
-                </div>
-                <p className="text-[0.65rem] sm:text-sm text-[#797979] tracking-wide ">
+                </motion.div>
+                <p className="text-[0.65rem] lg:text-sm text-[#797979] tracking-wide ">
                     Companies and communities I've collaborated with, and <b className='text-[#5b5b5b]'>many more</b>.
                 </p>
             </motion.div>

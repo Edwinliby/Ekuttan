@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import StatusIndicator from './StatusIndicator';
 import LocationInfo from './LocationInfo';
-import { getIndiaTime } from '@/utils/timeUtils';
+import { getIndiaTime } from '@/lib/utils';
 
 export default function Navbar() {
     const [statusColor, setStatusColor] = useState<'green' | 'orange' | 'red' | 'gray'>('gray');
@@ -55,7 +55,7 @@ export default function Navbar() {
 
         if (indiaNow >= start && indiaNow <= end) {
             setStatusColor('green');
-            setStatusLabel('Online');
+            setStatusLabel('Available for Work');
         } else if (indiaNow >= oneHourBefore && indiaNow < start) {
             setStatusColor('orange');
             setStatusLabel('Online Soon');

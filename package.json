@@ -9,14 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.11.4",
     "lucide-react": "^0.510.0",
     "motion": "^12.11.3",
     "next": "^15.3.2",
-    "posthog-js": "^1.242.2",
-    "posthog-node": "^4.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import line from '@/../public/curveLine.svg';
 import { exp, works } from './const';
@@ -26,11 +26,12 @@ const blurFadeIn = {
 };
 
 export default function Work() {
+    const controls = useAnimation();
     const [radius, setRadius] = useState(325)
 
     useEffect(() => {
         const handleResize = () => {
-            const newRadius = window.innerWidth <= 500 ? 325 : 450;
+            const newRadius = window.innerWidth <= 700 ? 325 : 450;
             setRadius(newRadius);
         };
 
@@ -44,6 +45,13 @@ export default function Work() {
         <div className="w-full h-full flex flex-col md:flex-row 2xl:flex-col gap-3 xs:gap-5">
             {/* My Experience Card */}
             <motion.div
+                drag
+                dragElastic={0.2}
+                dragMomentum={false}
+                animate={controls}
+                onDragEnd={() => {
+                    controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 500, damping: 30 } });
+                }}
                 variants={blurFadeIn}
                 initial="hidden"
                 whileInView="visible"
@@ -57,7 +65,7 @@ export default function Work() {
                     </span>
                 </b>
 
-                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] 2xl:h-fit relative top-1 pb-2">
+                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] xl:h-[9rem] 2xl:h-fit relative top-1 pb-2">
                     <motion.span
                         variants={blurFadeIn}
                         initial="hidden"
@@ -65,7 +73,7 @@ export default function Work() {
                         transition={{ duration: 1.2 }}
                         viewport={{ once: true }}
                         className="origin-top z-0 absolute left-6.25 block w-0.5 2xl:w-[2.5px] bg-[#c0c0c0]
-                        h-[calc(100%+8rem)] 2xs:h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] 2xl:h-[80%]"
+                        h-[calc(100%+8rem)] 2xs:h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] xl:h-[calc(100%+1rem)] 2xl:h-[80%]"
                     />
 
                     {exp.map((item, index) => (
@@ -80,7 +88,7 @@ export default function Work() {
                         >
                             <span className="rounded-full w-3 h-3 bg-black" />
                             <div className="relative -top-1.5">
-                                <b className='text-sm sm:text-base tracking-wide'>{item.title}</b>
+                                <b className='text-sm lg:text-base tracking-wide'>{item.title}</b>
                                 <p className="text-[0.65rem] sm:text-xs text-[#919191]">{item.time}</p>
                             </div>
                         </motion.div>
@@ -90,10 +98,17 @@ export default function Work() {
 
             {/* My Works & Projects Card */}
             <motion.div
+                drag
+                dragElastic={0.2}
+                dragMomentum={false}
+                animate={controls}
+                onDragEnd={() => {
+                    controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 500, damping: 30 } });
+                }}
+                transition={{ delay: 0.2 }}
                 variants={blurFadeIn}
                 initial="hidden"
                 whileInView="visible"
-                transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
                 className="overflow-hidden group relative w-full lg:w-1/2 2xl:w-full h-[10rem] xs:h-[13rem] sm:h-full shadow-lg rounded-3xl sm:rounded-4xl border-4 sm:border-[6px] border-white pt-3 xs:pt-4 bg-gradient-to-b from-[#F0F0F0] to-[#ffffff]"
             >
@@ -109,13 +124,13 @@ export default function Work() {
                     width={500}
                     height={500}
                     draggable={false}
-                    className="w-full h-fit absolute bottom-0 sm:bottom-4 inset-x-0 z-0"
+                    className="w-full h-fit absolute bottom-0 sm:bottom-8 lg:bottom-0 inset-x-0 z-0"
                 />
                 <OrbitingCircles
                     path={false}
                     radius={radius}
                     speed={0.5}
-                    className='w-full h-full top-[225%] xs:top-[175%] sm:top-[200%] lg:top-[225%] left-1/2 -translate-x-1/2'
+                    className='w-full h-full top-[225%] sm:top-[200%] xs:top-[170%] md:top-[195%] lg:top-[290%] xl:top-[230%]'
                 >
                     {works.map((item, i) => (
                         <motion.div
