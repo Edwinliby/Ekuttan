@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useAnimation } from 'framer-motion';
+import { useState } from 'react';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import c1 from '@/../public/companies/2.webp';
 import c2 from '@/../public/companies/3.webp';
 import c3 from '@/../public/companies/1.webp';
 import c4 from '@/../public/companies/4.webp';
 import c5 from '@/../public/companies/5.webp';
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
 const companies = [
     {
@@ -56,18 +58,45 @@ const fadeInWithBlur = {
 
 export default function Index() {
     const controls = useAnimation();
+    const [isClicked, setIsClicked] = useState(false);
     return (
         <div className="w-full sm:w-fit h-fit flex flex-col items-start gap-4 sm:gap-14 justify-between">
             {/* Headings Section */}
             <div className="flex flex-col">
-                <motion.h1
-                    variants={fadeInWithBlur}
-                    initial="hidden"
-                    animate="visible"
-                    className="text-7xl xl:text-8xl font-bold text-[#171717]"
+                <div
+                    onMouseEnter={() => setIsClicked(true)}
+                    onMouseLeave={() => setIsClicked(false)}
+                    className="relative group w-fit"
                 >
-                    Adaptive
-                </motion.h1>
+                    <motion.h1
+                        variants={fadeInWithBlur}
+                        initial="hidden"
+                        animate="visible"
+                        className="relative w-fit text-7xl xl:text-8xl font-bold text-[#171717]"
+                    >
+                        Adaptive
+                        <IoIosInformationCircleOutline
+                            size={15}
+                            className="absolute bottom-0 -right-5 text-black/50 cursor-pointer"
+                        />
+                    </motion.h1>
+
+                    {/* Tooltip */}
+                    <AnimatePresence>
+                        {isClicked && (
+                            <motion.div
+                                key="tooltip"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.2 }}
+                                className="w-max max-w-xs tracking-wider absolute bottom-0 -right-10 bg-[#171717]/50 backdrop-blur-sm text-white text-xs p-2 rounded-md"
+                            >
+                                I use <b>"Adaptive"</b> to reflect my flexibility across technologies, quick learning ability, and readiness to work beyond just frontend tasks.
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
 
                 <motion.h1
                     variants={fadeInWithBlur}
@@ -107,7 +136,7 @@ export default function Index() {
                 >
                     <div className="flex gap-6 3xl:gap-10 items-center justify-between">
                         {companies.map((company) => (
-                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10 md:w-11 3xl:w-22">
+                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10 md:w-11 xl:w-16 3xl:w-22">
                                 <motion.img
                                     src={company.img.src}
                                     alt={company.alt}
