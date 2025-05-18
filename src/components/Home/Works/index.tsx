@@ -65,7 +65,7 @@ export default function Work() {
                     </span>
                 </b>
 
-                <div className="overflow-x-auto 2xl:overflow-visible h-[5rem] xs:h-[9rem] md:h-full lg:h-[7.5rem] xl:h-[9rem] 2xl:h-fit relative top-1 pb-2">
+                <div className="overflow-x-auto 2xl:overflow-visible h-fit md:h-full lg:h-[7.5rem] xl:h-[9rem] 2xl:h-fit relative top-1 pb-2">
                     <motion.span
                         variants={blurFadeIn}
                         initial="hidden"
@@ -73,7 +73,7 @@ export default function Work() {
                         transition={{ duration: 1.2 }}
                         viewport={{ once: true }}
                         className="origin-top z-0 absolute left-6.25 block w-0.5 2xl:w-[2.5px] bg-[#c0c0c0]
-                        h-[calc(100%+8rem)] 2xs:h-[calc(100%+5rem)] xs:h-[calc(100%+1rem)] sm:h-[70%] lg:h-[calc(100%+2rem)] xl:h-[calc(100%+1rem)] 2xl:h-[80%]"
+                        h-[80%] sm:h-[70%] lg:h-[calc(100%+2rem)] xl:h-[calc(100%+1rem)] 2xl:h-[80%]"
                     />
 
                     {exp.map((item, index) => (
