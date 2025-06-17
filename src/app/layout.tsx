@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next"
+import { Instrument_Serif } from 'next/font/google';
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+});
 
 const neueMontreal = localFont({
   src: [
@@ -67,7 +74,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="https://ekuttan.vercel.app/icon0.svg" />
       </head>
       <body
-        className={`${neueMontreal.variable} antialiased`}
+        className={`${neueMontreal.variable} ${instrumentSerif.variable} antialiased`}
       >
         <Analytics />
         {children}

@@ -104,7 +104,7 @@ export default function ProfilePic() {
         >
             <motion.div
                 ref={cardRef}
-                className="relative w-fit h-[20rem] xl:h-[25rem] 2xl:h-fit border-[6px] border-white bg-gradient-to-br from-[#FFFFFF] via-[#dfdfdf] to-[#C0C0C0] rounded-[2rem] overflow-hidden shadow-xl"
+                className="relative w-fit h-[20rem] xl:h-[25rem] 2xl:h-fit 2xl:w-[25rem] flex justify-center items-center border-[6px] border-white bg-gradient-to-br from-[#FFFFFF] via-[#dfdfdf] to-[#C0C0C0] rounded-[2rem] overflow-hidden shadow-xl"
                 style={{
                     rotateX,
                     rotateY,
@@ -132,13 +132,14 @@ export default function ProfilePic() {
                     src='/edwin.svg'
                     draggable={false}
                     alt="edwin liby"
-                    className="w-18 h-18 sm:w-20 sm:h-20 object-contain absolute top-[20%] left-[35%] transform -translate-x-[35%] -translate-y-[20%] z-50"
+                    className="w-18 h-18 sm:w-24 sm:h-24 object-contain absolute top-[18%] left-[30%] transform -translate-x-[35%] -translate-y-[20%] z-50"
                 />
 
                 {/* Image */}
                 <Image
                     src={Pic}
                     alt="hero"
+                    draggable={false}
                     width={800}
                     height={800}
                     className="w-full h-full object-cover relative z-10 transition duration-500 ease-in-out"
