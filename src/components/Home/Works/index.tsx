@@ -101,7 +101,7 @@ export default function Work() {
                             Works & Projects
                         </span>
                     </b>
-                    <div className='flex justify-start ml-6 items-center gap-4 md:gap-6 mt-2 md:mt-0'>
+                    <div className='flex justify-start md:ml-6 items-center gap-4 md:gap-6 mt-2 md:mt-0'>
                         <Folder name="Personal Projects" items={projects} onClick={() => setOpenFolder({ name: "Projects", items: projects })} />
                         <Folder name="Client Works" items={works} onClick={() => setOpenFolder({ name: "Works", items: works })} />
                     </div>

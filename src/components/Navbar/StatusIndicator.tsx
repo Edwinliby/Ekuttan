@@ -4,13 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { formatIndiaTime } from '@/lib/utils';
 
-const colorMap: Record<string, [string, string]> = {
-    green: ['#4ade80', '#22c55e'],
-    orange: ['#fdba74', '#f97316'],
-    red: ['#fca5a5', '#ef4444'],
-    gray: ['#d1d5db', '#6b7280'],
-};
-
 interface Props {
     statusColor: 'green' | 'orange' | 'red' | 'gray';
     statusLabel: string;
@@ -26,7 +19,6 @@ export default function StatusIndicator({
     weatherDesc,
     currentTime,
 }: Props) {
-    const [outer, inner] = colorMap[statusColor];
     const [isClicked, setIsClicked] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -47,25 +39,6 @@ export default function StatusIndicator({
                 hovered: { width: 'auto' },
             }}
         >
-            <span className="relative flex h-3 w-3 items-center justify-center mr-1">
-                <motion.span
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inline-flex h-full w-full rounded-full"
-                    style={{ backgroundColor: outer }}
-                    animate={{
-                        scale: [1, 2],
-                        opacity: [0.8, 0],
-                    }}
-                    transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                    }}
-                />
-                <span
-                    className="relative inline-flex rounded-full h-2 w-2"
-                    style={{ backgroundColor: inner }}
-                />
-            </span>
             <span className="pl-0.5 font-bold text-black">{statusLabel}</span>
 
             <motion.div

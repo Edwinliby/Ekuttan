@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next"
-import { Instrument_Serif } from 'next/font/google';
+import { Just_Me_Again_Down_Here } from 'next/font/google';
 
-const instrumentSerif = Instrument_Serif({
+const instrumentSerif = Just_Me_Again_Down_Here({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-instrument-serif",

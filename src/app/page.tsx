@@ -4,12 +4,12 @@ import HomePage from '@/components/Home'
 
 export default function Home() {
   return (
-    <main className="w-full sm:h-screen">
+    <main className="w-full h-full md:h-screen">
       <Particles
-        className="absolute inset-0 -z-10"
+        className="fixed inset-0 -z-10 h-screen"
         quantity={300}
         ease={80}
-        color={"#B7B7B7"}
+        color={"#C9C9C9"}
         refresh
       />
       <Navbar />

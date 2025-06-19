@@ -49,19 +49,19 @@ export default function Navbar() {
         const month = indiaNow.getMonth();
         const date = indiaNow.getDate();
 
-        const start = new Date(year, month, date, 9, 0, 0);
+        const start = new Date(year, month, date, 10, 0, 0);
         const end = new Date(year, month, date, 19, 0, 0);
         const oneHourBefore = new Date(start.getTime() - 60 * 60 * 1000);
 
         if (indiaNow >= start && indiaNow <= end) {
             setStatusColor('green');
-            setStatusLabel('Available for Work');
+            setStatusLabel('🔥 Work mode ON');
         } else if (indiaNow >= oneHourBefore && indiaNow < start) {
             setStatusColor('orange');
-            setStatusLabel('Online Soon');
+            setStatusLabel('🪥 Online Soon');
         } else {
             setStatusColor('red');
-            setStatusLabel('Offline');
+            setStatusLabel('🎉 Work mode OFF');
         }
     }, [currentTime]);
 
