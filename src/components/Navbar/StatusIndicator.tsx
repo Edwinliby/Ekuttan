@@ -31,7 +31,7 @@ export default function StatusIndicator({
             onClick={toggleClicked}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative inline-flex items-center bg-white rounded-full text-[10px] sm:text-xs overflow-hidden cursor-pointer px-2 py-1 select-none"
+            className="relative inline-flex items-center rounded-full text-[10px] sm:text-xs overflow-hidden cursor-pointer px-2 py-1 select-none"
             layout
             animate={isActive ? 'hovered' : 'rest'}
             variants={{
@@ -39,7 +39,7 @@ export default function StatusIndicator({
                 hovered: { width: 'auto' },
             }}
         >
-            <span className="pl-0.5 font-bold text-black">{statusLabel}</span>
+            <span className="pl-0.5 font-semibold">{statusLabel}</span>
 
             <motion.div
                 className="flex items-center gap-1 ml-2 overflow-hidden"
@@ -49,8 +49,8 @@ export default function StatusIndicator({
                 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-                <span className="text-gray-500 whitespace-nowrap">(9:00 — 19:00)</span>
-                <span className="text-gray-400">|</span>
+                <span className="text-gray-600 whitespace-nowrap">(9:00 — 19:00)</span>
+                <span className="text-gray-600">|</span>
                 <span
                     className="text-gray-600 cursor-help whitespace-nowrap"
                     title={formatIndiaTime(currentTime, {

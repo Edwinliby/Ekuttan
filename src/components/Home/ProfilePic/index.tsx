@@ -4,7 +4,7 @@ import Image from "next/image";
 import Pic from '@/../public/pic.webp';
 import { motion, useMotionValue, animate } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { FaLinkedinIn, FaGithub, FaXTwitter, FaEnvelope } from "react-icons/fa6";
+import { FaLinkedinIn, FaGithub, FaXTwitter, FaDribbble } from "react-icons/fa6";
 import { useMediaQuery } from 'react-responsive';
 
 const shineVariants = {
@@ -26,12 +26,12 @@ const links = [
         url: 'https://x.com/edwinliby'
     },
     {
-        icon: <FaEnvelope size={25} />,
-        url: 'mailto:edwinliby30@gmail.com'
+        icon: <FaDribbble size={25} />,
+        url: 'https://dribbble.com/Edwinliby'
     }
 ]
 
-export default function ProfilePic() {
+export default function ProfilePic({ className: className }: { className?: string }) {
     const cardRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
@@ -90,7 +90,7 @@ export default function ProfilePic() {
 
     return (
         <motion.div
-            className="relative"
+            className={`relative pl-8 justify-center items-center ${className}`}
             style={{ perspective: 1000 }}
             onClick={toggleClicked}
             onHoverStart={() => setIsHovered(true)}
@@ -104,7 +104,7 @@ export default function ProfilePic() {
         >
             <motion.div
                 ref={cardRef}
-                className="relative w-fit h-[20rem] xl:h-[25rem] 2xl:h-fit 2xl:w-[25rem] flex justify-center items-center border-[6px] border-white bg-gradient-to-br from-[#FFFFFF] via-[#dfdfdf] to-[#C0C0C0] rounded-[2rem] overflow-hidden shadow-xl"
+                className="relative w-fit h-fit flex justify-center items-center border-2 border-white/50 rounded-[2.5rem] backdrop-blur-sm overflow-hidden shadow-lg shadow-black/5"
                 style={{
                     rotateX,
                     rotateY,
@@ -158,8 +158,8 @@ export default function ProfilePic() {
                         <motion.a
                             key={index}
                             href={link.url}
-                            whileHover={{ scale: 1.1, backgroundColor: '#F8F8F8' }}
-                            className="rounded-lg sm:rounded-2xl border border-[#e0e0e0] w-10 h-10 p-2.5 sm:w-12 sm:h-12 flex items-center justify-center bg-white"
+                            whileHover={{ scale: 1.1 }}
+                            className="rounded-lg sm:rounded-2xl border border-white/50 w-10 h-10 p-2.5 sm:w-12 sm:h-12 flex items-center justify-center text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm"
                         >
                             {link.icon}
                         </motion.a>

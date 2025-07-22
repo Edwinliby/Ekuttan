@@ -50,7 +50,7 @@ export default function Navbar() {
         const date = indiaNow.getDate();
 
         const start = new Date(year, month, date, 10, 0, 0);
-        const end = new Date(year, month, date, 19, 0, 0);
+        const end = new Date(year, month, date, 21, 0, 0);
         const oneHourBefore = new Date(start.getTime() - 60 * 60 * 1000);
 
         if (indiaNow >= start && indiaNow <= end) {
@@ -61,7 +61,7 @@ export default function Navbar() {
             setStatusLabel('🪥 Online Soon');
         } else {
             setStatusColor('red');
-            setStatusLabel('🎉 Work mode OFF');
+            setStatusLabel('💤 Work mode OFF');
         }
     }, [currentTime]);
 

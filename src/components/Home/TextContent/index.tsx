@@ -1,96 +1,112 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import c1 from '@/../public/companies/2.webp';
-import c2 from '@/../public/companies/3.webp';
-import c3 from '@/../public/companies/1.webp';
+import { motion, useAnimation, Variants } from 'framer-motion';
+import c1 from '@/../public/companies/1.webp';
+import c2 from '@/../public/companies/2.webp';
+import c3 from '@/../public/companies/3.webp';
 import c4 from '@/../public/companies/4.webp';
 import c5 from '@/../public/companies/5.webp';
+import c6 from '@/../public/companies/6.webp';
+import c7 from '@/../public/companies/7.webp';
 import Booking from './book';
+import { IoMdMail } from "react-icons/io";
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 const companies = [
-    { img: c1, alt: "onetac", link: "https://www.onetac.org/" },
-    { img: c2, alt: "scaleupconclave", link: "https://scaleupconclave.com/" },
-    { img: c3, alt: "volshauz", link: "https://volshauz.com/" },
+    { img: c1, alt: "mulearn", link: "https://mulearn.org/" },
+    { img: c2, alt: "volshauz", link: "https://volshauz.com/" },
+    { img: c3, alt: "scaleupconclave", link: "https://scaleupconclave.com/" },
     { img: c4, alt: "makemypass", link: "https://makemypass.com/" },
-    { img: c5, alt: "mulearn", link: "https://mulearn.org/" },
+    { img: c5, alt: "onetac", link: "https://onetac.org/" },
+    { img: c6, alt: "qseverse", link: "https://qseverse.com/" },
+    { img: c7, alt: "elvcom", link: "https://elvcom.com/" },
 ];
 
-const fadeInWithBlur = {
+const fadeInWithBlur: Variants = {
     hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1, ease: 'easeOut' } },
+    visible: {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        transition: { duration: 1, ease: 'easeOut' },
+    },
 };
+
+const sentence = ["Build", "with", "Clarity", "Delivered", "with", "Speed"]
 
 export default function Index() {
     const controls = useAnimation();
-
-    const titles = ["Designer", "Developer"];
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % titles.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <div className="w-full sm:w-fit h-fit flex flex-col items-start gap-6 sm:gap-10 xl:gap-22 justify-between">
+        <div className="w-full sm:h-full flex flex-col items-center md:items-start gap-4 md:gap-10 xl:gap-22 justify-between py-2">
+            <motion.div
+                variants={fadeInWithBlur}
+                initial="hidden"
+                animate="visible"
+                className='relative bottom-0.5 block sm:hidden'
+            >
+                <img src="/edwin.svg" alt="edwin spelling" className='absolute -top-9 -left-8 w-18 h-16' />
+                <img src="/smallPic.webp" alt="small profile pic" className='rounded-xl border-2 border-white w-20 h-20 bg-white/10 backdrop-blur-md -rotate-6 animate-float' />
+            </motion.div>
+
             {/* Headings Section */}
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col gap-4 sm:gap-6 items-center justify-center sm:items-start sm:justify-start ">
                 <Booking />
-                <motion.p
-                    variants={fadeInWithBlur}
-                    initial="hidden"
-                    animate="visible"
-                    className="text-2xl xl:text-3xl font-semibold text-gradient mb-2"
-                >
-                    3 years of experience as
-                </motion.p>
-                <motion.div
-                    variants={fadeInWithBlur}
-                    initial="hidden"
-                    animate="visible"
-                    className="h-[80px] md:h-[105px] relative perspective-1000"
-                    style={{ perspective: 1000 }}  // add 3D perspective
-                >
-                    <AnimatePresence mode="wait">
+                <div className="w-full flex flex-wrap gap-2 justify-center sm:justify-start">
+                    {sentence.map((sentence, index) => (
                         <motion.h1
-                            key={titles[currentIndex]}
-                            initial={{ rotateX: 90, opacity: 0 }}
-                            animate={{ rotateX: 0, opacity: 1 }}
-                            exit={{ rotateX: -90, opacity: 0 }}
-                            transition={{ duration: 0.8, ease: [0.45, 0, 0.2, 1] }}
-                            className="h-full absolute text-7xl xl:text-8xl font-bold text-transparent text-gradient origin-top"
-                            style={{ transformStyle: 'preserve-3d' }}
+                            variants={fadeInWithBlur}
+                            initial="hidden"
+                            animate="visible"
+                            key={index}
+                            className="text-4xl sm:text-6xl lg:text-4xl xl:text-[2.85rem] sm:leading-tight font-bold text-gradient tracking-[-1.25px]"
                         >
-                            {titles[currentIndex]}
+                            {sentence}
                         </motion.h1>
-                    </AnimatePresence>
-                </motion.div>
+                    ))}
+                </div>
+                <div className='flex items-center gap-3'>
+                    <motion.a
+                        variants={fadeInWithBlur}
+                        initial="hidden"
+                        animate="visible"
+                        href="https://cal.com/edwin-liby/project-discuss"
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 w-fit px-6 py-3 rounded-xl text-sm text-white hover:text-black/80 font-semibold
+                     bg-gradient-to-t from-gray-900 to-gray-600 hover:bg-gradient-to-t hover:from-white/50 hover:to-white/10 
+                     shadow-2xl shadow-white/50 hover:shadow-black/15 inset-shadow-sm inset-shadow-white/30 hover:-translate-y-1.5 transition duration-300 ease-in-out"
+                    >
+                        Book a Call <HiChatBubbleLeftRight />
+                    </motion.a>
+                    <motion.a
+                        variants={fadeInWithBlur}
+                        initial="hidden"
+                        animate="visible"
+                        href="mailto:hi@edwinliby.com"
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 w-fit px-6 py-3 rounded-xl text-sm text-black/80 font-semibold
+                        bg-gradient-to-t from-white/50 to-white/10 shadow-2xl shadow-black/15 inset-shadow-sm inset-shadow-white/30 
+                        hover:-translate-y-1.5 transition duration-300 ease-in-out"
+                    >
+                        Chat via Mail<IoMdMail />
+                    </motion.a>
+                </div>
             </div>
 
             {/* Companies */}
             <motion.div variants={fadeInWithBlur} initial="hidden" animate="visible"
-                className="w-full sm:w-fit flex flex-col items-start gap-2 sm:gap-3">
-                <p className="text-[0.65rem] lg:text-sm text-[#797979] tracking-wide ">
-                    Companies and communities I've collaborated with, and <b className='text-[#5b5b5b]'>many more</b>.
+                className="w-full sm:w-fit flex flex-col items-start gap-2 sm:gap-3 p-4 md:p-0">
+                <p className="text-center sm:text-left text-[0.65rem] sm:text-sm font-medium text-[#797979] leading-relaxed">
+                    I have been in the industry for almost 3 years as a <b className='font-instrument font-semibold text-[#818181] tracking-wide'>Designer</b> & <b className='font-semibold'>Developer</b>.
+                    Worked with communities and delievered <b>14+</b> projects.
                 </p>
                 <motion.div
-                    drag
-                    dragElastic={0.2}
-                    dragMomentum={false}
                     animate={controls}
-                    onDragEnd={() => {
-                        controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 500, damping: 30 } });
-                    }}
                     className="w-full relative py-2"
                 >
-                    <div className="flex gap-4 sm:gap-6 xl:gap-8 3xl:gap-10 items-center justify-between">
+                    <div className="flex flex-wrap gap-4 xl:gap-6 items-center justify-center md:justify-start">
                         {companies.map((company) => (
-                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10 md:w-11 xl:w-16 3xl:w-22">
+                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10">
                                 <motion.img
                                     src={company.img.src}
                                     alt={company.alt}
@@ -98,7 +114,7 @@ export default function Index() {
                                     width={100}
                                     height={100}
                                     whileHover={{ scale: 1.2 }}
-                                    className="w-full h-full object-contain py-2 sm:py-1.5"
+                                    className="w-full h-full object-contain cursor-pointer py-1"
                                 />
                             </Link>
                         ))}

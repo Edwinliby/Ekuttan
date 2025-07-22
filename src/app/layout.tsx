@@ -1,34 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next"
-import { Just_Me_Again_Down_Here } from 'next/font/google';
+import { Just_Me_Again_Down_Here, Inter, Instrument_Serif } from 'next/font/google';
 
-const instrumentSerif = Just_Me_Again_Down_Here({
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const justMe = Just_Me_Again_Down_Here({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-just-me-again-down-here",
+});
+
+const instrumentSerif = Instrument_Serif({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-instrument-serif",
-});
-
-const neueMontreal = localFont({
-  src: [
-    {
-      path: "../fonts/NeueMontreal-Bold.otf",
-      weight: "900",
-      style: "normal",
-    },
-    {
-      path: "../fonts/NeueMontreal-Medium.otf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/NeueMontreal-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-neue-montreal",
 });
 
 export const metadata: Metadata = {
@@ -74,7 +63,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="https://ekuttan.vercel.app/icon0.svg" />
       </head>
       <body
-        className={`${neueMontreal.variable} ${instrumentSerif.variable} antialiased`}
+        className={`${justMe.variable} ${instrumentSerif.variable} ${inter.variable} antialiased`}
       >
         <Analytics />
         {children}
