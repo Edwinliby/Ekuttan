@@ -98,7 +98,7 @@ export default function Index() {
                 className="w-full sm:w-fit flex flex-col items-start gap-2 sm:gap-3 p-4 md:p-0">
                 <p className="text-center sm:text-left text-[0.65rem] sm:text-sm font-medium text-[#797979] leading-relaxed">
                     I have been in the industry for almost 3 years as a <b className='font-instrument font-semibold text-[#818181] tracking-wide'>Designer</b> & <b className='font-semibold'>Developer</b>.
-                    Worked with communities and delievered <b>14+</b> projects.
+                    Worked with communities and delivered <b>14+</b> projects.
                 </p>
                 <motion.div
                     animate={controls}
