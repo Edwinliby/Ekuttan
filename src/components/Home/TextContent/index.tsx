@@ -38,7 +38,7 @@ const sentence = ["Build", "with", "Clarity", "Delivered", "with", "Speed"]
 export default function Index() {
     const controls = useAnimation();
     return (
-        <div className="w-full sm:h-full flex flex-col items-center md:items-start gap-4 md:gap-10 xl:gap-22 justify-between py-2">
+        <div className="relative z-10 w-full sm:h-full flex flex-col items-center md:items-start gap-4 md:gap-10 xl:gap-22 justify-between py-2">
             <motion.div
                 variants={fadeInWithBlur}
                 initial="hidden"
@@ -59,7 +59,7 @@ export default function Index() {
                             initial="hidden"
                             animate="visible"
                             key={index}
-                            className="text-4xl sm:text-6xl lg:text-4xl xl:text-[2.85rem] sm:leading-tight font-bold text-gradient tracking-[-1.25px]"
+                            className="text-4xl sm:text-6xl lg:text-4xl xl:text-[2.85rem] sm:leading-tight font-bold text-gradient tracking-[-1.25px] transform-gpu backface-hidden"
                         >
                             {sentence}
                         </motion.h1>
@@ -72,8 +72,8 @@ export default function Index() {
                         animate="visible"
                         href="https://cal.com/edwin-liby/project-discuss"
                         target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-2 w-fit px-6 py-3 rounded-xl text-sm text-white hover:text-black/80 font-semibold
-                     bg-gradient-to-t from-gray-900 to-gray-600 hover:bg-gradient-to-t hover:from-white/50 hover:to-white/10 
+                        className="flex items-center gap-2 w-fit px-6 py-3 rounded-xl text-sm text-white font-semibold
+                     bg-gradient-to-t from-gray-900 to-gray-600 
                      shadow-2xl shadow-white/50 hover:shadow-black/15 inset-shadow-sm inset-shadow-white/30 hover:-translate-y-1.5 transition duration-300 ease-in-out"
                     >
                         Book a Call <HiChatBubbleLeftRight />
@@ -95,30 +95,29 @@ export default function Index() {
 
             {/* Companies */}
             <motion.div variants={fadeInWithBlur} initial="hidden" animate="visible"
-                className="w-full sm:w-fit flex flex-col items-start gap-2 sm:gap-3 p-4 md:p-0">
-                <p className="text-center sm:text-left text-[0.65rem] sm:text-sm font-medium text-[#797979] leading-relaxed">
-                    I have been in the industry for almost 3 years as a <b className='font-instrument font-semibold text-[#818181] tracking-wide'>Designer</b> & <b className='font-semibold'>Developer</b>.
+                className="w-full sm:w-fit flex flex-col items-center sm:items-start gap-2 sm:gap-3 p-4 md:p-0">
+                <p className="text-center sm:text-left text-[0.65rem] sm:text-sm font-medium text-[var(--text-secondary)] leading-relaxed">
+                    I have been in the industry for almost 3 years as a <b className='font-instrument font-semibold text-[var(--text-secondary)] tracking-wide'>Designer</b> & <b className='font-semibold'>Developer</b>.
                     Worked with communities and delivered <b>14+</b> projects.
                 </p>
+
                 <motion.div
                     animate={controls}
-                    className="w-full relative py-2"
+                    className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-4 xl:gap-6 py-2"
                 >
-                    <div className="flex flex-wrap gap-4 xl:gap-6 items-center justify-center md:justify-start">
-                        {companies.map((company) => (
-                            <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="w-16 h-10">
-                                <motion.img
-                                    src={company.img.src}
-                                    alt={company.alt}
-                                    draggable={false}
-                                    width={100}
-                                    height={100}
-                                    whileHover={{ scale: 1.2 }}
-                                    className="w-full h-full object-contain cursor-pointer py-1"
-                                />
-                            </Link>
-                        ))}
-                    </div>
+                    {companies.map((company) => (
+                        <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="group relative">
+                            <motion.img
+                                src={company.img.src}
+                                alt={company.alt}
+                                draggable={false}
+                                width={100}
+                                height={100}
+                                whileHover={{ scale: 1.1 }}
+                                className="w-16 h-8 sm:w-20 sm:h-10 object-contain cursor-pointer transition-all duration-300 ease-out"
+                            />
+                        </Link>
+                    ))}
                 </motion.div>
             </motion.div>
         </div>

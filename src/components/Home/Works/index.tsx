@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import { motion, useAnimation, Variants, AnimatePresence } from 'framer-motion';
 import { exp, works, projects } from './const';
 import Folder from './folder';
 import FolderPopup from './popup';
-
 
 // Reusable blur-in animation
 const blurFadeIn: Variants = {
@@ -72,7 +71,7 @@ export default function Work() {
                                 <span className="rounded-full w-3 h-3 bg-white" />
                                 <div className="relative -top-1.5">
                                     <b className='text-sm lg:text-base font-semibold'>{item.title}</b>
-                                    <p className="text-[0.65rem] sm:text-xs text-[#5e5e5e]">{item.time}</p>
+                                    <p className="text-[0.65rem] sm:text-xs text-[var(--text-secondary)]">{item.time}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -102,13 +101,15 @@ export default function Work() {
                 </motion.div>
             </div>
 
-            {openFolder && (
-                <FolderPopup
-                    name={openFolder.name}
-                    items={openFolder.items}
-                    onClose={() => setOpenFolder(null)}
-                />
-            )}
+            <AnimatePresence>
+                {openFolder && (
+                    <FolderPopup
+                        name={openFolder.name}
+                        items={openFolder.items}
+                        onClose={() => setOpenFolder(null)}
+                    />
+                )}
+            </AnimatePresence>
         </>
     );
 }

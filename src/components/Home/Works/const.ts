@@ -19,54 +19,86 @@ import p2 from "@/../public/projects/2.webp";
 export const projects = [
   {
     img: p2,
+    title: "Mulearn - Learning Platform",
+    tags: ["Dev", "UI Design"],
   },
   {
     img: p1,
+    title: "Project ScaleUp",
+    tags: ["Web App", "Next.js"],
   },
 ];
 
 export const works = [
   {
     img: w1,
+    title: "Client Project One",
+    tags: ["Dev", "Frontend"],
   },
   {
     img: w2,
+    title: "Website Template",
+    tags: ["UI Design", "Figma"],
   },
   {
     img: w3,
+    title: "Elvcom Portfolio",
+    tags: ["React", "Motion"],
   },
   {
     img: w4,
+    title: "Corporate Landing Page",
+    tags: ["Dev", "SEO", "Design"],
   },
   {
     img: w5,
+    title: "Dental Clinic Website",
+    tags: ["UI/UX", "Dev", "Design"],
   },
   {
     img: w6,
+    title: "Campaign Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w7,
+    title: "Website Template",
+    tags: ["Web Design"],
   },
   {
     img: w8,
+    title: "Educational Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w9,
+    title: "Real Estate Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w10,
+    title: "Agency Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w11,
+    title: "Festival Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w12,
+    title: "Company Website",
+    tags: ["Dev", "Design"],
   },
   {
     img: w13,
+    title: "Event Website",
+    tags: ["Dev"],
   },
   {
     img: w14,
+    title: "College Website",
+    tags: ["Dev", "Design"],
   },
 ];
 

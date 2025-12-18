@@ -4,8 +4,8 @@ import Work from "./Works";
 
 export default function Home() {
     return (
-        <div className="h-full w-full flex items-center justify-center p-4 sm:p-8 lg:p-16">
-            <div className="sm:h-full w-full max-w-[1400px] sm:max-h-[500px] 3xl:max-h-[600px] flex flex-col lg:flex-row sm:gap-8 items-center justify-center mt-10">
+        <div className="min-h-screen w-full flex items-center justify-center p-4 sm:p-8 lg:p-16">
+            <div className="w-full max-w-[1400px] sm:max-h-[500px] 3xl:max-h-[600px] flex flex-col lg:flex-row sm:gap-8 items-center justify-center mt-10">
                 <div className="flex-1 sm:h-full">
                     <TextContent />
                 </div>

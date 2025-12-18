@@ -22,7 +22,7 @@ export default function Book() {
             rel="noopener noreferrer"
             className="z-10 flex items-start"
         >
-            <div className="inline-flex items-center justify-center transition ease-out text-xs sm:text-sm font-semibold text-gray-800 hover:text-gray-900">
+            <div className="inline-flex items-center justify-center transition ease-out text-xs sm:text-sm font-semibold text-[var(--foreground)] hover:text-gray-900">
                 <span className="relative flex h-4.5 w-4.5 items-center justify-center">
                     <motion.span
                         className="bg-green-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inline-flex h-full w-full rounded-full"

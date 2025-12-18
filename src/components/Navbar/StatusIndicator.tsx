@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { formatIndiaTime } from '@/lib/utils';
+import { formatTime } from '@/lib/utils';
 
 interface Props {
     statusColor: 'green' | 'orange' | 'red' | 'gray';
     statusLabel: string;
     iconCode: string | null;
     weatherDesc: string;
-    currentTime: Date;
+    currentTime: Date;  
 }
 
 export default function StatusIndicator({
@@ -49,11 +49,11 @@ export default function StatusIndicator({
                 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-                <span className="text-gray-600 whitespace-nowrap">(9:00 — 19:00)</span>
-                <span className="text-gray-600">|</span>
+                <span className="text-[var(--text-secondary)] whitespace-nowrap">(9:00 — 19:00)</span>
+                <span className="text-[var(--text-secondary)]">|</span>
                 <span
-                    className="text-gray-600 cursor-help whitespace-nowrap"
-                    title={formatIndiaTime(currentTime, {
+                    className="text-[var(--text-secondary)] cursor-help whitespace-nowrap"
+                    title={formatTime(currentTime, {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
@@ -63,7 +63,7 @@ export default function StatusIndicator({
                         timeZoneName: 'long',
                     })}
                 >
-                    {formatIndiaTime(currentTime, {
+                    {formatTime(currentTime, {
                         hour: '2-digit',
                         minute: '2-digit',
                         timeZoneName: 'short',

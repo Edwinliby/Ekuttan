@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import StatusIndicator from './StatusIndicator';
 import LocationInfo from './LocationInfo';
-import { getIndiaTime } from '@/lib/utils';
+import { getTime } from '@/lib/utils';
 
 export default function Navbar() {
     const [statusColor, setStatusColor] = useState<'green' | 'orange' | 'red' | 'gray'>('gray');
@@ -44,19 +44,19 @@ export default function Navbar() {
     }, [API_KEY]);
 
     useEffect(() => {
-        const indiaNow = getIndiaTime(currentTime);
-        const year = indiaNow.getFullYear();
-        const month = indiaNow.getMonth();
-        const date = indiaNow.getDate();
+        const TimeNow = getTime(currentTime);
+        const year = TimeNow.getFullYear();
+        const month = TimeNow.getMonth();
+        const date = TimeNow.getDate();
 
         const start = new Date(year, month, date, 10, 0, 0);
         const end = new Date(year, month, date, 21, 0, 0);
         const oneHourBefore = new Date(start.getTime() - 60 * 60 * 1000);
 
-        if (indiaNow >= start && indiaNow <= end) {
+        if (TimeNow >= start && TimeNow <= end) {
             setStatusColor('green');
             setStatusLabel('🔥 Work mode ON');
-        } else if (indiaNow >= oneHourBefore && indiaNow < start) {
+        } else if (TimeNow >= oneHourBefore && TimeNow < start) {
             setStatusColor('orange');
             setStatusLabel('🪥 Online Soon');
         } else {

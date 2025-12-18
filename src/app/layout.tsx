@@ -1,3 +1,4 @@
+import ThemeController from "@/components/ThemeController";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -47,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-title" content="Ekuttan" />
         <meta property="og:title" content="Edwin Liby aka Ekuttan" />
@@ -64,7 +65,9 @@ export default function RootLayout({
       </head>
       <body
         className={`${justMe.variable} ${instrumentSerif.variable} ${inter.variable} antialiased`}
+        suppressHydrationWarning
       >
+        <ThemeController />
         <Analytics />
         {children}
       </body>

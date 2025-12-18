@@ -15,7 +15,7 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(to bottom, #000000, #383838, #7F7F7F);
+  background: linear-gradient(to bottom, var(--text-gradient-start), var(--text-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -24,36 +24,99 @@
   .animate-slowping {
     animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+}
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
 
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-3px);
-    }
-
-    100% {
-      transform: translateY(0px);
-    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
   }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+@utility animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+:root {
+  --bg-start: #dbeafe;
+  --bg-end: #eff6ff;
+  --foreground: #1e3a8a;
+
+  /* Text Colors */
+  --text-gradient-start: #000000;
+  --text-gradient-end: #7F7F7F;
+  --text-secondary: #797979;
+
+  /* Card Colors */
+  --card-bg-start: #f0f0f0;
+  --card-bg-end: #ffffff;
 }
 
 html {
   max-width: 1920px;
   margin: 0 auto;
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Hide scrollbar for all elements */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 body {
   overflow-x: hidden;
   letter-spacing: -0.5px;
   font-family: var(--font-inter);
+  background: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
+  background-attachment: fixed;
+  color: var(--foreground);
+  transition: --bg-start 1s ease, --bg-end 1s ease, color 1s ease;
+  min-height: 100vh;
 }
 
 ::-moz-selection {
