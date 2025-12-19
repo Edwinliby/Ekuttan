@@ -40,7 +40,7 @@ export default function Work() {
                     viewport={{ once: true }}
                     className="hidden sm:block group sm:h-full lg:h-fit w-full lg:w-full pt-3 xs:pt-4"
                 >
-                    <b className="z-10 w-fit relative shadow shadow-black/5 px-4 py-2 text-xs 2xl:text-sm font-semibold rounded-3xl bg-white/20 border border-white/20 backdrop-blur-md">
+                    <b className="z-10 w-fit relative shadow shadow-black/5 px-4 py-2 text-xs 2xl:text-sm font-semibold rounded-3xl bg-[var(--foreground)]/10 border border-[var(--text-secondary)]/20 backdrop-blur-md text-[var(--foreground)]">
                         <span>
                             <img src="/xp.svg" alt="xp" draggable={false} className='w-4 h-4 inline relative -top-0.5 mr-1 group-hover:animate-bounce' />
                             XP Stats
@@ -88,7 +88,7 @@ export default function Work() {
                     viewport={{ once: true }}
                     className="overflow-hidden flex flex-col items-center justify-center sm:items-start sm:justify-start gap-4 md:gap-8 w-full lg:w-full h-fit sm:h-full pt-2 md:pt-4"
                 >
-                    <b className="-z-10 w-fit shadow shadow-black/5 border border-white/20 px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-white/20 backdrop-blur-md font-semibold">
+                    <b className="z-10 w-fit shadow shadow-black/5 border border-[var(--text-secondary)]/20 px-4 py-2 text-xs 2xl:text-sm rounded-3xl bg-[var(--foreground)]/10 backdrop-blur-md font-semibold text-[var(--foreground)]">
                         <span>
                             <img src="/craft.svg" alt="craft" draggable={false} className='w-4 h-4 inline relative -top-0.5 mr-1 group-hover:animate-bounce' />
                             My Works & Projects

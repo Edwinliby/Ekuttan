@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import { motion, useAnimation, Variants, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import c1 from '@/../public/companies/1.webp';
 import c2 from '@/../public/companies/2.webp';
 import c3 from '@/../public/companies/3.webp';
@@ -12,15 +13,16 @@ import c7 from '@/../public/companies/7.webp';
 import Booking from './book';
 import { IoMdMail } from "react-icons/io";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
+import CollabPopup, { CollabData } from './CollabPopup';
 
-const companies = [
-    { img: c1, alt: "mulearn", link: "https://mulearn.org/" },
-    { img: c2, alt: "volshauz", link: "https://volshauz.com/" },
-    { img: c3, alt: "scaleupconclave", link: "https://scaleupconclave.com/" },
-    { img: c4, alt: "makemypass", link: "https://makemypass.com/" },
-    { img: c5, alt: "onetac", link: "https://onetac.org/" },
-    { img: c6, alt: "qseverse", link: "https://qseverse.com/" },
-    { img: c7, alt: "elvcom", link: "https://elvcom.com/" },
+const companies: CollabData[] = [
+    { img: c1, alt: "mulearn", link: "https://mulearn.org/", year: "2023", projectCount: 1, timeline: "Jun - Jan", role: "Contributor" },
+    { img: c2, alt: "volshauz", link: "https://volshauz.com/", year: "2023", projectCount: 3, timeline: "Present", role: "Lead Frontend" },
+    { img: c3, alt: "scaleupconclave", link: "https://scaleupconclave.com/", year: "2024", projectCount: 1, timeline: "Jan - Feb", role: "Web Developer" },
+    { img: c4, alt: "makemypass", link: "https://makemypass.com/", year: "2023", projectCount: 2, timeline: "Aug - Dec", role: "UI Engineer" },
+    { img: c5, alt: "onetac", link: "https://onetac.org/", year: "2022", projectCount: 1, timeline: "Mar - May", role: "Freelance" },
+    { img: c6, alt: "qseverse", link: "https://qseverse.com/", year: "2022", projectCount: 1, timeline: "Sep - Nov", role: "Frontend Dev" },
+    { img: c7, alt: "elvcom", link: "https://elvcom.com/", year: "2021", projectCount: 5, timeline: "Jan - Dec", role: "Founder" },
 ];
 
 const fadeInWithBlur: Variants = {
@@ -37,6 +39,8 @@ const sentence = ["Build", "with", "Clarity", "Delivered", "with", "Speed"]
 
 export default function Index() {
     const controls = useAnimation();
+    const [showCollab, setShowCollab] = useState(false);
+
     return (
         <div className="relative z-10 w-full sm:h-full flex flex-col items-center md:items-start gap-4 md:gap-10 xl:gap-22 justify-between py-2">
             <motion.div
@@ -98,15 +102,15 @@ export default function Index() {
                 className="w-full sm:w-fit flex flex-col items-center sm:items-start gap-2 sm:gap-3 p-4 md:p-0">
                 <p className="text-center sm:text-left text-[0.65rem] sm:text-sm font-medium text-[var(--text-secondary)] leading-relaxed">
                     I have been in the industry for almost 3 years as a <b className='font-instrument font-semibold text-[var(--text-secondary)] tracking-wide'>Designer</b> & <b className='font-semibold'>Developer</b>.
-                    Worked with communities and delivered <b>14+</b> projects.
+                    Worked and collaborated with <b onClick={() => setShowCollab(true)} className='cursor-pointer underline decoration-dotted underline-offset-4 hover:text-[var(--foreground)] transition-colors duration-300'>{companies.length}+ companies</b>.
                 </p>
 
-                <motion.div
+                {/* <motion.div
                     animate={controls}
                     className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-4 xl:gap-6 py-2"
                 >
                     {companies.map((company) => (
-                        <Link href={company.link} rel='noopener' target='_blank' key={company.alt} className="group relative">
+                        <div onClick={() => setShowCollab(true)} key={company.alt} className="group relative cursor-pointer">
                             <motion.img
                                 src={company.img.src}
                                 alt={company.alt}
@@ -114,12 +118,18 @@ export default function Index() {
                                 width={100}
                                 height={100}
                                 whileHover={{ scale: 1.1 }}
-                                className="w-16 h-8 sm:w-20 sm:h-10 object-contain cursor-pointer transition-all duration-300 ease-out"
+                                className="w-16 h-8 sm:w-20 sm:h-10 object-contain transition-all duration-300 ease-out grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
                             />
-                        </Link>
+                        </div>
                     ))}
-                </motion.div>
+                </motion.div> */}
             </motion.div>
+
+            <AnimatePresence>
+                {showCollab && (
+                    <CollabPopup data={companies} onClose={() => setShowCollab(false)} />
+                )}
+            </AnimatePresence>
         </div>
     );
 }

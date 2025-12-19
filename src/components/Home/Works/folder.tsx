@@ -32,7 +32,7 @@ export default function ProjectBadge({ name, items, className, onClick }: Projec
                             className={`
                                 absolute -top-0 left-4 transform -translate-x-1/2 h-[70px] object-cover rounded object-top
                                 transition-transform duration-300 ease-in-out 
-                                group-hover:-translate-y-18 hover:scale-110 shadow-xl
+                                md:group-hover:-translate-y-18 md:hover:scale-110 shadow-xl
                                 z-[${20 + index}]
                             `}
                             style={{
@@ -50,7 +50,7 @@ export default function ProjectBadge({ name, items, className, onClick }: Projec
                 absolute bottom-0.5 left-0 w-full h-[91%] bg-gradient-to-t from-[#f0f0f0] to-[#ffffff] backdrop-blur-xl inset-shadow-sm 
                 rounded-b-xl rounded-tl-lg rounded-tr-xl z-20 shadow-[inset_0_-4px_8px_rgba(0,0,0,0.075)]
                 flex items-start justify-between p-4 origin-bottom
-                transition-transform duration-500 ease-in-out group-hover:[transform:rotateX(-30deg)] [transform-style:preserve-3d] [backface-visibility:hidden]"
+                transition-transform duration-500 ease-in-out md:group-hover:[transform:rotateX(-30deg)] [transform-style:preserve-3d] [backface-visibility:hidden]"
             >
                 <div className="relative -top-1">
                     <b className="text-sm md:text-base text-gray-800 font-semibold">{name}</b>
