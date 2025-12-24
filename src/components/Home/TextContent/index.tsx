@@ -49,7 +49,7 @@ export default function Index() {
                 animate="visible"
                 className='relative bottom-0.5 block sm:hidden'
             >
-                <img src="/edwin.svg" alt="edwin spelling" className='absolute -top-9 -left-8 w-18 h-16' />
+                <img src="/edwin.svg" alt="edwin spelling" className='absolute -top-9 -left-8 w-18 h-16' style={{ color: 'var(--icon-color)' }} />
                 <img src="/smallPic.webp" alt="small profile pic" className='rounded-xl border-2 border-white w-20 h-20 bg-white/10 backdrop-blur-md -rotate-6 animate-float' />
             </motion.div>
 

@@ -86,6 +86,9 @@
   /* Card Colors */
   --card-bg-start: #f0f0f0;
   --card-bg-end: #ffffff;
+
+  /* Icon Color */
+  --icon-color: #1e3a8a;
 }
 
 html {

@@ -31,6 +31,10 @@ export default function ThemeController() {
                 // Card Colors - Light
                 root.style.setProperty("--card-bg-start", "#f0f0f0");
                 root.style.setProperty("--card-bg-end", "#ffffff");
+
+                // Icon Color - Dark
+                root.style.setProperty("--icon-color", "#1e3a8a");
+                root.style.setProperty("--icon-brightness", "0");
             } else if (hour >= 11 && hour < 16) {
                 // Day: Bright Sky Gradient
                 root.style.setProperty("--bg-start", "#60a5fa"); // blue-400
@@ -45,6 +49,10 @@ export default function ThemeController() {
                 // Card Colors - Light
                 root.style.setProperty("--card-bg-start", "#e2e8f0");
                 root.style.setProperty("--card-bg-end", "#f8fafc");
+
+                // Icon Color - Dark
+                root.style.setProperty("--icon-color", "#0f172a");
+                root.style.setProperty("--icon-brightness", "0");
             } else if (hour >= 16 && hour < 20) {
                 // Evening: Twilight Blue Gradient
                 root.style.setProperty("--bg-start", "#4338ca"); // indigo-700
@@ -59,6 +67,10 @@ export default function ThemeController() {
                 // Card Colors - Dark
                 root.style.setProperty("--card-bg-start", "#1e293b"); // slate-800
                 root.style.setProperty("--card-bg-end", "#334155"); // slate-700
+
+                // Icon Color - Light
+                root.style.setProperty("--icon-color", "#eff6ff");
+                root.style.setProperty("--icon-brightness", "1");
             } else {
                 // Night: Deep Dark Gradient
                 root.style.setProperty("--bg-start", "#0f172a"); // slate-900
@@ -73,6 +85,10 @@ export default function ThemeController() {
                 // Card Colors - Dark
                 root.style.setProperty("--card-bg-start", "#0f172a");
                 root.style.setProperty("--card-bg-end", "#1e293b");
+
+                // Icon Color - Light
+                root.style.setProperty("--icon-color", "#f8fafc");
+                root.style.setProperty("--icon-brightness", "1");
             }
         };
 

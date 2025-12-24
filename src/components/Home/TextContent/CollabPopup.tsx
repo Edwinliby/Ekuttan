@@ -52,10 +52,10 @@ export default function CollabPopup({ data, onClose }: CollabPopupProps) {
                 {/* Scrollable Content */}
                 <div className="flex-1 overflow-y-auto p-6 relative">
                     {/* Vertical Line */}
-                    <div className="absolute left-6 sm:left-1/2 top-6 bottom-6 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent opacity-70 hidden sm:block" />
-                    <div className="absolute left-8 top-6 bottom-6 w-0.5 bg-[var(--foreground)]/20 sm:hidden block" />
-
                     <div className="space-y-12 sm:space-y-24 relative pb-12">
+                        {/* Vertical Line */}
+                        <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-purple-500 opacity-70 hidden sm:block" />
+                        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[var(--foreground)]/20 sm:hidden block" />
                         {data.map((item, index) => (
                             <motion.div
                                 key={index}

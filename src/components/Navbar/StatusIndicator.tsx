@@ -9,7 +9,7 @@ interface Props {
     statusLabel: string;
     iconCode: string | null;
     weatherDesc: string;
-    currentTime: Date;  
+    currentTime: Date;
 }
 
 export default function StatusIndicator({
@@ -70,12 +70,18 @@ export default function StatusIndicator({
                     })}
                 </span>
                 {iconCode && (
-                    <img
-                        src={`https://openweathermap.org/img/wn/${iconCode}.png`}
-                        alt="weather"
-                        title={weatherDesc}
-                        className="w-5 h-5"
-                    />
+                    <div className="w-5 h-5 overflow-hidden relative">
+                        <img
+                            src={`https://openweathermap.org/img/wn/${iconCode}.png`}
+                            alt="weather"
+                            title={weatherDesc}
+                            className="w-5 h-5 absolute top-0 left-0"
+                            style={{
+                                filter: 'drop-shadow(0 20px 0 var(--icon-color))',
+                                transform: 'translateY(-20px)'
+                            }}
+                        />
+                    </div>
                 )}
             </motion.div>
         </motion.div>
