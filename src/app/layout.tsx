@@ -54,6 +54,9 @@ export default function RootLayout({
         <meta property="og:title" content="Edwin Liby" />
         <meta property="og:description" content="Welcome to my Portfolio" />
         <meta property="og:image" content="https://edwinliby.dev/web-app-manifest-192x192.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="75" />
         <meta property="og:url" content="https://edwinliby.dev/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Edwin Liby" />

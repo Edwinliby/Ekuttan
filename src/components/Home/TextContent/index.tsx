@@ -86,7 +86,7 @@ export default function Index() {
                         variants={fadeInWithBlur}
                         initial="hidden"
                         animate="visible"
-                        href="mailto:hi@edwinliby.com"
+                        href="mailto:edwinliby2002@gmail.com"
                         target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-2 w-fit px-6 py-3 rounded-xl text-sm text-black/80 font-semibold
                         bg-gradient-to-t from-white/50 to-white/10 shadow-2xl shadow-black/15 inset-shadow-sm inset-shadow-white/30 
