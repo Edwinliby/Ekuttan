@@ -1,0 +1,44 @@
+# Edwin Liby - Designer & Developer Portfolio
+
+> Information, experience, projects, and contact details for Edwin Liby, a professional Designer & Developer specializing in high-performance web applications and sleek UI designs.
+
+## Core Information
+- **Motto**: Build with Clarity, Delivered with Speed
+- **Experience**: ~3 years as a Designer and Developer
+- **Primary Focus**: UI Engineering, Lead Frontend Development, SEO, Web Applications (React, Next.js, Framer Motion)
+- **Contact Email**: [edwinliby2002@gmail.com](mailto:edwinliby2002@gmail.com)
+- **Calendar/Scheduling**: [Book a Project Discussion via Cal.com](https://cal.com/edwin-liby/project-discuss)
+
+## Professional Experience
+- **Lead Frontend Engineer at Volshauz** (2023 - Present)
+  - Led frontend engineering and UI design systems for modern digital platforms.
+- **Frontend Developer Intern at MuLearn** (Jun 2023 - Jan 2024)
+  - Worked on gamified learning platforms and community portals.
+- **Freelance Developer & UI Engineer** (Feb 2022 - Present)
+  - Designed and delivered websites for diverse industries (Real Estate, Dental Clinics, Educational institutions, Corporate clients).
+- **Founder at Elvcom** (2021 - Present)
+  - Founded and managed client project pipelines, delivering 5+ digital products.
+
+## Featured Projects
+- **MuLearn** (Learning Platform)
+  - Tags: Development, UI Design
+  - Description: An interactive, gamified education and skill-building community portal.
+- **Project ScaleUp** (ScaleUp Conclave)
+  - Tags: Web App, Next.js
+  - Description: High-performance, fast-loading, state-of-the-art Next.js application for conferences and summits.
+
+## Tech Stack & Skills
+- **Frontend Frameworks**: React, Next.js, Tailwind CSS, Vanilla CSS, TypeScript
+- **Design & Prototyping**: Figma, UI/UX Engineering, Design Systems
+- **Motion & Interaction**: Framer Motion, Particles, Micro-animations, Scroll interactions
+- **Specializations**: Responsive design, Performance optimization, SEO
+
+## Collaboration & Clients
+Edwin has collaborated with 7+ major organizations and platforms:
+- **volshauz** (Lead Frontend)
+- **mulearn** (Contributor)
+- **scaleupconclave** (Web Developer)
+- **makemypass** (UI Engineer)
+- **onetac** (Freelance)
+- **qseverse** (Frontend Dev)
+- **elvcom** (Founder)
