@@ -128,11 +128,18 @@ export default function ProfilePic({ className: className }: { className?: strin
                     transition={{ duration: 1, ease: 'easeInOut' }}
                 />
 
-                <img
-                    src='/edwin.svg'
-                    draggable={false}
-                    alt="edwin liby"
-                    className="w-18 h-18 sm:w-24 sm:h-24 object-contain absolute top-[18%] left-[30%] transform -translate-x-[35%] -translate-y-[20%] z-50"
+                <div
+                    className="w-18 h-18 sm:w-24 sm:h-24 absolute top-[18%] left-[30%] transform -translate-x-[35%] -translate-y-[20%] z-50 bg-[var(--foreground)] opacity-80"
+                    style={{
+                        maskImage: 'url(/edwin.svg)',
+                        WebkitMaskImage: 'url(/edwin.svg)',
+                        maskSize: 'contain',
+                        WebkitMaskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskPosition: 'center'
+                    }}
                 />
 
                 {/* Image */}

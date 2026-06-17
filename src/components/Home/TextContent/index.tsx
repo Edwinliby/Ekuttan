@@ -16,13 +16,13 @@ import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import CollabPopup, { CollabData } from './CollabPopup';
 
 const companies: CollabData[] = [
-    { img: c1, alt: "mulearn", link: "https://mulearn.org/", year: "2023", projectCount: 1, timeline: "Jun - Jan", role: "Contributor" },
-    { img: c2, alt: "volshauz", link: "https://volshauz.com/", year: "2023", projectCount: 3, timeline: "Present", role: "Lead Frontend" },
-    { img: c3, alt: "scaleupconclave", link: "https://scaleupconclave.com/", year: "2024", projectCount: 1, timeline: "Jan - Feb", role: "Web Developer" },
-    { img: c4, alt: "makemypass", link: "https://makemypass.com/", year: "2023", projectCount: 2, timeline: "Aug - Dec", role: "UI Engineer" },
-    { img: c5, alt: "onetac", link: "https://onetac.org/", year: "2022", projectCount: 1, timeline: "Mar - May", role: "Freelance" },
-    { img: c6, alt: "qseverse", link: "https://qseverse.com/", year: "2022", projectCount: 1, timeline: "Sep - Nov", role: "Frontend Dev" },
-    { img: c7, alt: "elvcom", link: "https://elvcom.com/", year: "2021", projectCount: 5, timeline: "Jan - Dec", role: "Founder" },
+    { img: c1, alt: "mulearn", link: "https://mulearn.org/", year: "2023", projectCount: 2, timeline: "Jun - Jan", role: "Contributor", brief: "Contributed to the development of open-source projects and internal tools, improving the learning experience for thousands of students." },
+    { img: c2, alt: "volshauz", link: "https://volshauz.com/", year: "2023", projectCount: 12, timeline: "Present (Freelancer)", role: "Lead Frontend", brief: "Leading the frontend team in building scalable and modern web applications, focusing on performance, accessibility, and pixel-perfect design." },
+    { img: c3, alt: "scaleupconclave", link: "https://scaleupconclave.com/", year: "2024", projectCount: 1, timeline: "Jan - Feb", role: "Web Developer", brief: "Developed the official website for the ScaleUp Conclave event, handling high traffic and providing a seamless registration flow." },
+    { img: c4, alt: "makemypass", link: "https://makemypass.com/", year: "2024", projectCount: 1, timeline: "Dec - Jan", role: "UI Engineer", brief: "Engineered complex user interfaces for an event ticketing platform, streamlining the checkout process and enhancing user engagement." },
+    { img: c5, alt: "onetac", link: "https://onetac.org/", year: "2025", projectCount: 1, timeline: "Mar - Apr", role: "Freelance", brief: "Delivered a complete website revamp as a freelance developer, collaborating closely with stakeholders to meet business objectives." },
+    { img: c6, alt: "qseverse", link: "https://qseverse.com/", year: "2025", projectCount: 1, timeline: "Jun - July", role: "Frontend Dev", brief: "Built interactive frontend components for a Web3 platform, integrating smart contracts and providing real-time data updates." },
+    { img: c7, alt: "elvcom", link: "https://elvcom.com/", year: "2025", projectCount: 1, timeline: "Mar - Apr", role: "Freelance", brief: "Founded and managed an agency delivering digital solutions, overseeing end-to-end project lifecycles from design to deployment." },
 ];
 
 const fadeInWithBlur: Variants = {
@@ -49,7 +49,19 @@ export default function Index() {
                 animate="visible"
                 className='relative bottom-0.5 block sm:hidden'
             >
-                <img src="/edwin.svg" alt="edwin spelling" className='absolute -top-9 -left-8 w-18 h-16' style={{ color: 'var(--icon-color)' }} />
+                <div 
+                    className='absolute -top-9 -left-8 w-18 h-16 bg-[var(--foreground)] opacity-80' 
+                    style={{
+                        maskImage: 'url(/edwin.svg)',
+                        WebkitMaskImage: 'url(/edwin.svg)',
+                        maskSize: 'contain',
+                        WebkitMaskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskPosition: 'center'
+                    }}
+                />
                 <img src="/smallPic.webp" alt="small profile pic" className='rounded-xl border-2 border-white w-20 h-20 bg-white/10 backdrop-blur-md -rotate-6 animate-float' />
             </motion.div>
 
