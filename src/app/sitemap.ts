@@ -14,5 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.2,
     },
+    {
+      url: 'https://edwinliby.dev/app-ads.txt',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.1,
+    },
   ]
 }
