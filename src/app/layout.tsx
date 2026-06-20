@@ -2,6 +2,7 @@ import ThemeController from "@/components/ThemeController";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Just_Me_Again_Down_Here, Inter, Instrument_Serif } from 'next/font/google';
 
 const inter = Inter({
@@ -72,6 +73,7 @@ export default function RootLayout({
       >
         <ThemeController />
         <Analytics />
+        <SpeedInsights />
         {children}
       </body>
     </html>
