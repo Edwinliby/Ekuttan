@@ -160,7 +160,7 @@ export default function FolderPopup({ name, items, onClose }: FolderPopupProps) 
                                     
                                     <h4 className="text-lg font-bold text-[var(--foreground)] mb-3">About this Project</h4>
                                     <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
-                                        {items[selectedIndex].brief || "This project involved extensive design and development work to meet client specifications. Detailed case study and insights will be updated soon."}
+                                        {items[selectedIndex].brief || "Every pixel and line of code here has a story. I'm currently documenting the journey behind this project—from the initial spark to the final polish. Full case study coming soon."}
                                     </p>
                                     
                                     {/* Optionally add a link if one exists */}
