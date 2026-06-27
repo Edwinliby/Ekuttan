@@ -118,7 +118,7 @@ const PrivacyPolicy = () => {
                                     Used in both <strong>{appName}</strong> and <strong>{blockPuzzleName}</strong> to serve advertisements. AdMob may collect device identifiers to serve personalized or non-personalized ads.
                                 </p>
                                 <a href="https://policies.google.com/technologies/ads" className="text-blue-500 text-sm font-semibold hover:underline flex items-center gap-1">
-                                    Google's Advertising Policies →
+                                    Google&apos;s Advertising Policies →
                                 </a>
                             </div>
                             <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-transparent border border-emerald-500/10 hover:border-emerald-500/30 transition-all">
